@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>d6329d75-0fff-4120-ac78-86a17b125ae9</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <_WebToolingArtifacts Remove="properties\serviceDependencies.json" />
+	  <_WebToolingArtifacts Remove="properties\serviceDependencies.local.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="properties\serviceDependencies.json" />
+	  <Content Include="properties\serviceDependencies.local.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Pics\**\*;">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="Setup\**\*;">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<None Include="IntegrationEvents\EventHandling\AnyFutureIntegrationEventHandler.cs.txt" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.AzureStorage" Version="6.1.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
+		<PackageReference Include="Grpc.AspNetCore" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Polly" Version="7.2.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\IntegrationEventLogEF\IntegrationEventLogEF.csproj" />
+	  <ProjectReference Include="..\..\Services.Common\Services.Common.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Proto\catalog.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Setup\" />
+	  <Folder Include="Proto\" />
+	  <Folder Include="Pics\" />
+	</ItemGroup>
+
+</Project>

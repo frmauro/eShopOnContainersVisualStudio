@@ -58,6 +58,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Infrastructure\CatalogMigrations\" />
+	  <Folder Include="Migrations\" />
 	  <Folder Include="Setup\" />
 	  <Folder Include="Proto\" />
 	  <Folder Include="Pics\" />

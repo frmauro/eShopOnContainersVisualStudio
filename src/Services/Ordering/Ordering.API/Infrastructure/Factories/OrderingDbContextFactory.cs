@@ -12,7 +12,7 @@ public class OrderingDbContextFactory : IDesignTimeDbContextFactory<OrderingCont
 
         var optionsBuilder = new DbContextOptionsBuilder<OrderingContext>();
 
-        optionsBuilder.UseSqlServer(config["ConnectionString"], sqlServerOptionsAction: o => o.MigrationsAssembly("Ordering.API"));
+        optionsBuilder.UseSqlServer(config["ConnectionStrings"], sqlServerOptionsAction: o => o.MigrationsAssembly("Ordering.API"));
 
         return new OrderingContext(optionsBuilder.Options);
     }

@@ -7,3 +7,6 @@ Sample reference containerized application, cross-platform and microservices arc
 # command docker run to rabbitmq
 docker run -d --name rabbitmq  -p 15672:15672 -p 5672:5672 rabbitmq:3-management-alpine
 
+# command docker run to redis
+docker run -d --name basketdata -p 6379:6379 redis:alpine
+

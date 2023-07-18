@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\IBasketRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="properties\serviceDependencies.json" />
+    <_WebToolingArtifacts Remove="properties\serviceDependencies.local.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="properties\serviceDependencies.json" />
+    <Content Include="properties\serviceDependencies.local.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Grpc.AspNetCore" Version="2.55.0" />
+	  <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="6.0.4" />
+	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services.Common\Services.Common.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Proto\basket.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <None Include="Repositories\IBasketRepository.cs" />
+  </ItemGroup>
+
+</Project>
